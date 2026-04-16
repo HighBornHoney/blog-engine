@@ -31,7 +31,7 @@ class Router
 
                 [$controller, $methodName] = explode('@', $action);
 
-                $controller = "App\\Controllers\\$controller";
+                $controller = "HighBornHoney\\BlogEngine\\Controllers\\$controller";
 
                 (new $controller)->$methodName(...$matches);
                 return;
