@@ -1,7 +1,7 @@
 {extends file="layouts/main.tpl"}
 
 {block name="content"}
-    <h1 class="mb-4">Categories</h1>
+    <h1 class="mb-4">Категории</h1>
 
     {foreach $categories as $category}
         <div class="mb-5">
@@ -25,7 +25,7 @@
             </div>
 
             <a href="/category/{$category.id}" class="btn btn-primary">
-                All posts
+                Все публикации
             </a>
         </div>
     {/foreach}

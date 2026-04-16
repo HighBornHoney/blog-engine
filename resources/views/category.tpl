@@ -1,12 +1,12 @@
 {extends file="layouts/main.tpl"}
 
 {block name="content"}
-    <h1 class="mb-4">Category {$category_id}</h1>
+    <h1 class="mb-4">Категория: {$category.name}</h1>
 
     <form method="GET" class="mb-3">
         <select name="sort" class="form-select w-auto" onchange="this.form.submit()">
-            <option value="date" {if $sort == 'date'}selected{/if}>Sort by date</option>
-            <option value="views" {if $sort == 'views'}selected{/if}>Sort by views</option>
+            <option value="date" {if $sort == 'date'}selected{/if}>Сортировать по дате</option>
+            <option value="views" {if $sort == 'views'}selected{/if}>Сортировать по просмотрам</option>
         </select>
     </form>
 
@@ -15,7 +15,7 @@
             <a href="/post/{$post.id}" class="list-group-item list-group-item-action">
                 <div class="d-flex justify-content-between">
                     <span>{$post.title}</span>
-                    <small>{$post.views} views</small>
+                    <small>{$post.views} просмотров</small>
                 </div>
             </a>
         {/foreach}

@@ -14,9 +14,7 @@ class PostController extends Controller
         $post = PostModel::find($id);
 
         if (!$post) {
-            http_response_code(404);
-            echo "Post not found";
-            return;
+            $this->errorResponse('Публикация не найдена');
         }
 
         PostModel::incrementViews($id);

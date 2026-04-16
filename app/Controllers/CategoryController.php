@@ -5,12 +5,19 @@ declare(strict_types=1);
 namespace HighBornHoney\BlogEngine\Controllers;
 
 use HighBornHoney\BlogEngine\Core\Controller;
+use HighBornHoney\BlogEngine\Models\CategoryModel;
 use HighBornHoney\BlogEngine\Models\PostModel;
 
 class CategoryController extends Controller
 {
     public function show($id): void
     {
+        $category = CategoryModel::find($id);
+
+        if (!$category) {
+            $this->errorResponse('Категория не найдена');
+        }
+
         $sort = $_GET['sort'] ?? 'date';
         $page = (int)($_GET['page'] ?? 1);
 
@@ -22,7 +29,7 @@ class CategoryController extends Controller
 
         $this->view('category', [
             'posts' => $posts,
-            'category_id' => $id,
+            'category' => $category,
             'sort' => $sort,
             'page' => $page,
             'pages' => $pages
