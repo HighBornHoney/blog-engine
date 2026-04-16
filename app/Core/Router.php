@@ -28,6 +28,7 @@ class Router
 
             if (preg_match("#^$pattern$#", $uri, $matches)) {
                 array_shift($matches);
+                array_walk($matches, fn(&$value) => $value = (int)$value);
 
                 [$controller, $methodName] = explode('@', $action);
 
