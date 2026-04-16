@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace HighBornHoney\BlogEngine\Core;
 
+use Dotenv\Dotenv;
 use PDO;
 
 class Database
@@ -13,6 +14,9 @@ class Database
     public static function connect(): PDO
     {
         if (!self::$pdo) {
+            $dotenv = Dotenv::createImmutable(__DIR__ . '/../../');
+            $dotenv->load();
+
             $config = require __DIR__ . '/../../config/database.php';
 
             self::$pdo = new PDO(
