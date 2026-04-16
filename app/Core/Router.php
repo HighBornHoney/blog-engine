@@ -28,13 +28,13 @@ class Router
 
             if (preg_match("#^$pattern$#", $uri, $matches)) {
                 array_shift($matches);
-                array_walk($matches, fn(&$value) => $value = (int)$value);
+                array_walk($matches, fn (&$value) => $value = (int)$value);
 
                 [$controller, $methodName] = explode('@', $action);
 
                 $controller = "HighBornHoney\\BlogEngine\\Controllers\\$controller";
 
-                (new $controller)->$methodName(...$matches);
+                (new $controller())->$methodName(...$matches);
                 return;
             }
         }
